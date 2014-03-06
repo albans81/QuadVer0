@@ -137,9 +137,10 @@ void EXTI0_IRQHandler(void)
   if ( CCR1_Val == 200 )
     tmp = 95;
   CCR1_Val = tmp + 5;
-  CCR2_Val = tmp + 5;
-  CCR3_Val = tmp + 5;
-  CCR4_Val = tmp + 5;
+  TIM3->CCR1 = CCR1_Val;  
+  TIM3->CCR2 = CCR1_Val;  
+  TIM3->CCR3 = CCR1_Val;  
+  TIM3->CCR4 = CCR1_Val;
   
   switch (CCR1_Val){
   case 100:
