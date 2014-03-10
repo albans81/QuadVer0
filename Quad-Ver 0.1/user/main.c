@@ -42,6 +42,8 @@ uint16_t CCR2_Val = 200;//esempio 249;
 uint16_t CCR3_Val = 200;//esempio 166;
 uint16_t CCR4_Val = 200;//esempio 83;
 uint16_t PrescalerValue = 0;
+uint32_t TimingDelay;
+uint8_t Antirimbalzo =  0;
 
 /* Private function prototypes -----------------------------------------------*/
 void TIM_Config(void);
@@ -60,7 +62,12 @@ int main(void)
        file (startup_stm32f4xx.s) before to branch to application main.
        To reconfigure the default setting of SystemInit() function, refer to
        system_stm32f4xx.c file
-     */
+  */
+  
+  /* SysTick end of count event each 10ms */
+  RCC_ClocksTypeDef  RCC_Clocks;
+  RCC_GetClocksFreq(&RCC_Clocks);
+  SysTick_Config(RCC_Clocks.HCLK_Frequency / 100);
 
   /* Initialize LEDs and User_Button on STM32F4-Discovery --------------------*/
   STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_EXTI); 
@@ -194,6 +201,35 @@ void TIM_Config(void)
   GPIO_PinAFConfig(GPIOB, GPIO_PinSource0, GPIO_AF_TIM3);
   GPIO_PinAFConfig(GPIOB, GPIO_PinSource1, GPIO_AF_TIM3); 
 }
+
+
+/**
+  * @brief  Inserts a delay time.
+  * @param  nTime: specifies the delay time length, in 10 ms.
+  * @retval None
+  */
+void DelayBotton(__IO uint32_t nTime)
+{
+  TimingDelay = nTime;
+  Antirimbalzo = 1;
+}
+
+
+/**
+  * @brief  Decrements the TimingDelay variable.
+  * @param  None
+  * @retval None
+  */
+void TimingDelay_Decrement(void)
+{
+  if (TimingDelay != 0x00)
+  { 
+    TimingDelay--;
+    if (TimingDelay == 0)
+      Antirimbalzo = 0;
+  }
+}
+
 
 #ifdef  USE_FULL_ASSERT
 

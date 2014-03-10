@@ -46,6 +46,20 @@
 /******************************************************************************/
 
 /**
+  * @brief  This function handles SysTick Handler.
+  * @param  None
+  * @retval None
+  */
+void SysTick_Handler(void)
+{
+  if (TimingDelay != 0x00)
+  {
+    TimingDelay_Decrement();
+  }
+  
+}
+
+/**
   * @brief  This function handles NMI exception.
   * @param  None
   * @retval None
@@ -133,6 +147,12 @@ void PendSV_Handler(void)
   */
 void EXTI0_IRQHandler(void)
 {
+  if (Antirimbalzo) {
+      /* Clear the EXTI line pending bit */
+    EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);
+    return;
+  }
+  
   uint16_t tmp = CCR1_Val;
   if ( CCR1_Val == 200 )
     tmp = 95;
@@ -173,19 +193,13 @@ void EXTI0_IRQHandler(void)
       STM_EVAL_LEDOn(LED5);
       STM_EVAL_LEDOn(LED6); 
       break;
-  }
+  }  
+  
+  DelayBotton(10);
   
   /* Clear the EXTI line pending bit */
   EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);
 }
-
-/**
-  * @brief  This function handles SysTick Handler.
-  * @param  None
-  * @retval None
-  */
-void SysTick_Handler(void)
-{}
 
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */
