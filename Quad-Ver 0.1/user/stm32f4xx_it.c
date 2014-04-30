@@ -24,6 +24,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
 #include "stm32f4_discovery.h"
+#include "stm32f4_discovery_lis302dl.h"
 #include "main.h"
 
 /** @addtogroup STM32F4_Discovery_Peripheral_Examples
@@ -38,6 +39,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+__IO uint8_t TempAcceleration = 0;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -52,11 +54,23 @@
   */
 void SysTick_Handler(void)
 {
+  uint8_t temp1, temp2 = 0x00;
+  
   if (TimingDelay != 0x00)
   {
     TimingDelay_Decrement();
   }
   
+  Buffer[0] = 0;
+  Buffer[2] = 0;
+
+  LIS302DL_Read(Buffer, LIS302DL_OUT_X_ADDR, 6);
+  /* Remove the offsets values from data */
+  //Buffer[0] -= X_Offset;
+  //Buffer[2] -= Y_Offset;
+  /* Update autoreload and capture compare registers value*/
+  temp1 = ABS((int8_t)(Buffer[0]));
+  temp2 = ABS((int8_t)(Buffer[2]));       
 }
 
 /**
@@ -147,12 +161,6 @@ void PendSV_Handler(void)
   */
 void EXTI0_IRQHandler(void)
 {
-  if (Antirimbalzo) {
-      /* Clear the EXTI line pending bit */
-    EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);
-    return;
-  }
-  
   uint16_t tmp = CCR1_Val;
   if ( CCR1_Val == 200 )
     tmp = 95;
@@ -161,41 +169,6 @@ void EXTI0_IRQHandler(void)
   TIM3->CCR2 = CCR1_Val;  
   TIM3->CCR3 = CCR1_Val;  
   TIM3->CCR4 = CCR1_Val;
-  
-  switch (CCR1_Val){
-  case 100:
-      STM_EVAL_LEDOff(LED4);
-      STM_EVAL_LEDOff(LED3);
-      STM_EVAL_LEDOff(LED5);
-      STM_EVAL_LEDOff(LED6); 
-    break;
-  case 105:
-      STM_EVAL_LEDOn(LED4);
-      STM_EVAL_LEDOff(LED3);
-      STM_EVAL_LEDOff(LED5);
-      STM_EVAL_LEDOff(LED6); 
-      break;
-  case 130:
-      STM_EVAL_LEDOn(LED4);
-      STM_EVAL_LEDOn(LED3);
-      STM_EVAL_LEDOff(LED5);
-      STM_EVAL_LEDOff(LED6); 
-      break;
-  case 155:
-      STM_EVAL_LEDOn(LED4);
-      STM_EVAL_LEDOn(LED3);
-      STM_EVAL_LEDOn(LED5);
-      STM_EVAL_LEDOff(LED6); 
-      break;
-  case 180:
-      STM_EVAL_LEDOn(LED4);
-      STM_EVAL_LEDOn(LED3);
-      STM_EVAL_LEDOn(LED5);
-      STM_EVAL_LEDOn(LED6); 
-      break;
-  }  
-  
-  DelayBotton(10);
   
   /* Clear the EXTI line pending bit */
   EXTI_ClearITPendingBit(USER_BUTTON_EXTI_LINE);

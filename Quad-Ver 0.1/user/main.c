@@ -21,6 +21,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4_discovery.h"
+#include "stm32f4_discovery_lis302dl.h"
 #include "main.h"
 
 /** @addtogroup STM32F4_Discovery_Peripheral_Examples
@@ -33,20 +34,27 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+#define MEMS_PASSCONDITION              15
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 TIM_OCInitTypeDef  TIM_OCInitStructure;
+LIS302DL_InitTypeDef  LIS302DL_InitStruct;
+LIS302DL_FilterConfigTypeDef LIS302DL_FilterStruct;
 uint16_t CCR1_Val = 200;// esempio 333;
 uint16_t CCR2_Val = 200;//esempio 249;
 uint16_t CCR3_Val = 200;//esempio 166;
 uint16_t CCR4_Val = 200;//esempio 83;
 uint16_t PrescalerValue = 0;
+uint8_t Counter  = 0xff;
+uint8_t Buffer[6];
 uint32_t TimingDelay;
-uint8_t Antirimbalzo =  0;
+
 
 /* Private function prototypes -----------------------------------------------*/
 void TIM_Config(void);
+void Accelerometer_MEMS_Test(void);
+void Delay(__IO uint32_t nTime);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -77,10 +85,6 @@ int main(void)
   STM_EVAL_LEDInit(LED5);
   STM_EVAL_LEDInit(LED6);
   
-  
-  /* TIM Configuration */
-  TIM_Config();
-
   /* -----------------------------------------------------------------------
     TIM3 Configuration: generate 4 PWM signals with 4 different duty cycles.
     
@@ -109,7 +113,10 @@ int main(void)
      function to update SystemCoreClock variable value. Otherwise, any configuration
      based on this variable will be incorrect.    
   ----------------------------------------------------------------------- */  
-
+  
+  /* TIM Configuration */
+  TIM_Config();
+  
   /* Compute the prescaler value */
   PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 28000000) - 1;
 
@@ -159,7 +166,28 @@ int main(void)
 
   /* TIM3 enable counter */
   TIM_Cmd(TIM3, ENABLE);
+  
+  /*Fine parte pwm per i motori*/  
+  /* MEMS configuration */
+  LIS302DL_InitStruct.Power_Mode = LIS302DL_LOWPOWERMODE_ACTIVE;
+  LIS302DL_InitStruct.Output_DataRate = LIS302DL_DATARATE_400;
+  LIS302DL_InitStruct.Axes_Enable = LIS302DL_XYZ_ENABLE;
+  LIS302DL_InitStruct.Full_Scale = LIS302DL_FULLSCALE_2_3;
+  LIS302DL_InitStruct.Self_Test = LIS302DL_SELFTEST_NORMAL;
+  LIS302DL_Init(&LIS302DL_InitStruct);
+  
+  /* Required delay for the MEMS Accelerometre: Turn-on time = 3/Output data Rate 
+  = 3/100 = 30ms */
+  Delay(30);
 
+  LIS302DL_Read(Buffer, LIS302DL_OUT_X_ADDR, 6);
+  //X_Offset = Buffer[0];
+  //Y_Offset = Buffer[2];
+  //Z_Offset = Buffer[4];    
+
+  /* qui faccio partire l'interrupt per il controllo dei dati */
+  Counter = 0;
+  
   while (1)
   {}
 }
@@ -206,12 +234,27 @@ void TIM_Config(void)
 /**
   * @brief  Inserts a delay time.
   * @param  nTime: specifies the delay time length, in 10 ms.
-  * @retval None
+  * @retval Attento che questo delay è bloccante, non chiamarlo in interrupt!!
   */
-void DelayBotton(__IO uint32_t nTime)
+void Delay(__IO uint32_t nTime)
 {
   TimingDelay = nTime;
-  Antirimbalzo = 1;
+  while(TimingDelay != 0);
+}
+
+/**
+  * @brief  This function handles the test program fail.
+  * @param  None
+  * @retval None
+  */
+void Fail_Handler(void)
+{  
+  while(1)
+  {
+    /* Toggle Red LED */
+    STM_EVAL_LEDToggle(LED5);
+    Delay(5);
+  }
 }
 
 
@@ -224,10 +267,23 @@ void TimingDelay_Decrement(void)
 {
   if (TimingDelay != 0x00)
   { 
-    TimingDelay--;
-    if (TimingDelay == 0)
-      Antirimbalzo = 0;
+    TimingDelay--;    
   }
+}
+
+
+
+/**
+  * @brief  MEMS accelerometre management of the timeout situation.
+  * @param  None.
+  * @retval None.
+  */
+uint32_t LIS302DL_TIMEOUT_UserCallback(void)
+{
+    /* Timeout error occured for SPI TXE/RXNE flags waiting loops.*/
+  Fail_Handler();    
+
+  return 0;  
 }
 
 
