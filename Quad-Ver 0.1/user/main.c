@@ -418,7 +418,11 @@ static void TIM4_Config(void)
 }
 
 /**
+<<<<<<< HEAD
   * @brief Test MEMS Hardware.
+=======
+  * @brief Test MEMS Hardware
+>>>>>>> 689bc8613eb30e669e1fabe49022a64022aa26e5
   *   The main objectif of this test is to check the hardware connection of the 
   *   MEMS peripheral.
   * @param None

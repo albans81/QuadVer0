@@ -41,7 +41,10 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 __IO uint8_t TempAcceleration = 0;
+<<<<<<< HEAD
 uint8_t SendSerial = 0;
+=======
+>>>>>>> 689bc8613eb30e669e1fabe49022a64022aa26e5
 /* Private function prototypes -----------------------------------------------*/
 extern USB_OTG_CORE_HANDLE           USB_OTG_dev;
 extern uint32_t USBD_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev);
@@ -80,12 +83,15 @@ void SysTick_Handler(void)
     /* Remove the offsets values from data */
     //Buffer[0] -= X_Offset;
     //Buffer[2] -= Y_Offset;
+<<<<<<< HEAD
     if (SendSerial){
       DCD_EP_Tx (&USB_OTG_dev,
                CDC_IN_EP,
                (uint8_t*)Buffer,
                6);
     }
+=======
+>>>>>>> 689bc8613eb30e669e1fabe49022a64022aa26e5
     /* Update autoreload and capture compare registers value*/
     temp1 = ABS((int8_t)(Buffer[0]));
     temp2 = ABS((int8_t)(Buffer[2]));       
@@ -216,6 +222,7 @@ void PendSV_Handler(void)
   */
 void EXTI0_IRQHandler(void)
 {
+<<<<<<< HEAD
   
   if (Counter != 0xff){
     if (SendSerial == 1)
@@ -224,6 +231,8 @@ void EXTI0_IRQHandler(void)
       SendSerial = 1;
   }
   
+=======
+>>>>>>> 689bc8613eb30e669e1fabe49022a64022aa26e5
   uint16_t tmp = CCR1_Val;
   if ( CCR1_Val == 200 )
     tmp = 95;
