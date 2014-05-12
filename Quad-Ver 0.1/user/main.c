@@ -21,7 +21,12 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4_discovery.h"
+#include "stm32f4_discovery_lis302dl.h"
 #include "main.h"
+#include "usbd_cdc_core.h"
+#include "usbd_usr.h"
+#include "usb_conf.h"
+#include "usbd_desc.h"
 
 /** @addtogroup STM32F4_Discovery_Peripheral_Examples
   * @{
@@ -33,22 +38,32 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+#define MEMS_PASSCONDITION              15
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 TIM_OCInitTypeDef  TIM_OCInitStructure;
+LIS302DL_InitTypeDef  LIS302DL_InitStruct;
+LIS302DL_FilterConfigTypeDef LIS302DL_FilterStruct;
 uint16_t CCR1_Val = 200;// esempio 333;
 uint16_t CCR2_Val = 200;//esempio 249;
 uint16_t CCR3_Val = 200;//esempio 166;
 uint16_t CCR4_Val = 200;//esempio 83;
 uint16_t PrescalerValue = 0;
+uint8_t Counter  = 0xff;
+uint8_t Buffer[6];
 uint32_t TimingDelay;
-uint8_t Antirimbalzo =  0;
+
 
 /* Private function prototypes -----------------------------------------------*/
 void TIM_Config(void);
+static void TIM4_Config(void);
+void Accelerometer_MEMS_Test(void);
+void Delay(__IO uint32_t nTime);
 
 /* Private functions ---------------------------------------------------------*/
+__ALIGN_BEGIN USB_OTG_CORE_HANDLE    USB_OTG_dev __ALIGN_END ;
+
 
 /**
   * @brief  Main program
@@ -68,6 +83,12 @@ int main(void)
   RCC_ClocksTypeDef  RCC_Clocks;
   RCC_GetClocksFreq(&RCC_Clocks);
   SysTick_Config(RCC_Clocks.HCLK_Frequency / 100);
+  
+  USBD_Init(&USB_OTG_dev,           
+            USB_OTG_FS_CORE_ID,
+            &USR_desc, 
+            &USBD_CDC_cb, 
+            NULL);
 
   /* Initialize LEDs and User_Button on STM32F4-Discovery --------------------*/
   STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_EXTI); 
@@ -77,10 +98,6 @@ int main(void)
   STM_EVAL_LEDInit(LED5);
   STM_EVAL_LEDInit(LED6);
   
-  
-  /* TIM Configuration */
-  TIM_Config();
-
   /* -----------------------------------------------------------------------
     TIM3 Configuration: generate 4 PWM signals with 4 different duty cycles.
     
@@ -109,7 +126,10 @@ int main(void)
      function to update SystemCoreClock variable value. Otherwise, any configuration
      based on this variable will be incorrect.    
   ----------------------------------------------------------------------- */  
-
+  
+  /* TIM Configuration */
+  TIM_Config();
+  
   /* Compute the prescaler value */
   PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 28000000) - 1;
 
@@ -159,7 +179,49 @@ int main(void)
 
   /* TIM3 enable counter */
   TIM_Cmd(TIM3, ENABLE);
+  
+  /*Fine parte pwm per i motori*/
+    
+  /* Move discovery kit to detect negative and positive acceleration values 
+      on X, Y and Z axis */
+  Accelerometer_MEMS_Test();
+  
+  /* Configurazione TIM4 per lampeggio led*/
+  TIM4_Config();
+  
+  /*MEMS */
+  /* Disable all Timer4 channels */
+    TIM_CCxCmd(TIM4, TIM_Channel_1, DISABLE);
+    TIM_CCxCmd(TIM4, TIM_Channel_2, DISABLE);
+    TIM_CCxCmd(TIM4, TIM_Channel_3, DISABLE);
+    TIM_CCxCmd(TIM4, TIM_Channel_4, DISABLE);
 
+    /* MEMS configuration */
+    LIS302DL_InitStruct.Power_Mode = LIS302DL_LOWPOWERMODE_ACTIVE;
+    LIS302DL_InitStruct.Output_DataRate = LIS302DL_DATARATE_400;
+    LIS302DL_InitStruct.Axes_Enable = LIS302DL_XYZ_ENABLE;
+    LIS302DL_InitStruct.Full_Scale = LIS302DL_FULLSCALE_2_3;
+    LIS302DL_InitStruct.Self_Test = LIS302DL_SELFTEST_NORMAL;
+    LIS302DL_Init(&LIS302DL_InitStruct);
+    
+    /* Required delay for the MEMS Accelerometre: Turn-on time = 3/Output data Rate 
+    = 3/100 = 30ms */
+    Delay(30);
+    
+    /* MEMS High Pass Filter configuration */
+    LIS302DL_FilterStruct.HighPassFilter_Data_Selection = LIS302DL_FILTEREDDATASELECTION_OUTPUTREGISTER;
+    LIS302DL_FilterStruct.HighPassFilter_CutOff_Frequency = LIS302DL_HIGHPASSFILTER_LEVEL_3;
+    LIS302DL_FilterStruct.HighPassFilter_Interrupt = LIS302DL_HIGHPASSFILTERINTERRUPT_1_2;
+    LIS302DL_FilterConfig(&LIS302DL_FilterStruct);
+    
+    LIS302DL_Read(Buffer, LIS302DL_OUT_X_ADDR, 6);
+    //X_Offset = Buffer[0];
+    //Y_Offset = Buffer[2];
+    //Z_Offset = Buffer[4];    
+
+  /* qui faccio partire l'interrupt per il controllo dei dati */
+  Counter = 0;
+  
   while (1)
   {}
 }
@@ -206,12 +268,27 @@ void TIM_Config(void)
 /**
   * @brief  Inserts a delay time.
   * @param  nTime: specifies the delay time length, in 10 ms.
-  * @retval None
+  * @retval Attento che questo delay è bloccante, non chiamarlo in interrupt!!
   */
-void DelayBotton(__IO uint32_t nTime)
+void Delay(__IO uint32_t nTime)
 {
   TimingDelay = nTime;
-  Antirimbalzo = 1;
+  while(TimingDelay != 0);
+}
+
+/**
+  * @brief  This function handles the test program fail.
+  * @param  None
+  * @retval None
+  */
+void Fail_Handler(void)
+{  
+  while(1)
+  {
+    /* Toggle Red LED */
+    STM_EVAL_LEDToggle(LED5);
+    Delay(5);
+  }
 }
 
 
@@ -224,10 +301,215 @@ void TimingDelay_Decrement(void)
 {
   if (TimingDelay != 0x00)
   { 
-    TimingDelay--;
-    if (TimingDelay == 0)
-      Antirimbalzo = 0;
+    TimingDelay--;    
   }
+}
+
+/**
+  * @brief  Configures the TIM Peripheral.
+  * @param  None
+  * @retval None
+  */
+static void TIM4_Config(void)
+{
+  GPIO_InitTypeDef GPIO_InitStructure;
+  TIM_OCInitTypeDef  TIM_OCInitStructure;
+  TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
+  
+  /* --------------------------- System Clocks Configuration -----------------*/
+  /* TIM4 clock enable */
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+  
+  /* GPIOD clock enable */
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+
+  /*-------------------------- GPIO Configuration ----------------------------*/
+  /* GPIOD Configuration: Pins 12, 13, 14 and 15 in output push-pull */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+  GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+  /* Connect TIM4 pins to AF2 */  
+  GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);
+  GPIO_PinAFConfig(GPIOD, GPIO_PinSource13, GPIO_AF_TIM4); 
+  GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);
+  GPIO_PinAFConfig(GPIOD, GPIO_PinSource15, GPIO_AF_TIM4); 
+  
+    /* -----------------------------------------------------------------------
+    TIM4 Configuration: Output Compare Timing Mode:
+    
+    In this example TIM4 input clock (TIM4CLK) is set to 2 * APB1 clock (PCLK1), 
+    since APB1 prescaler is different from 1 (APB1 Prescaler = 4, see system_stm32f4xx.c file).
+      TIM4CLK = 2 * PCLK1  
+      PCLK1 = HCLK / 4 
+      => TIM4CLK = 2*(HCLK / 4) = HCLK/2 = SystemCoreClock/2
+         
+    To get TIM4 counter clock at 2 KHz, the prescaler is computed as follows:
+       Prescaler = (TIM4CLK / TIM1 counter clock) - 1
+       Prescaler = (168 MHz/(2 * 2 KHz)) - 1 = 41999
+                                        
+    To get TIM4 output clock at 1 Hz, the period (ARR)) is computed as follows:
+       ARR = (TIM4 counter clock / TIM4 output clock) - 1
+           = 1999
+                    
+    TIM4 Channel1 duty cycle = (TIM4_CCR1/ TIM4_ARR)* 100 = 50%
+    TIM4 Channel2 duty cycle = (TIM4_CCR2/ TIM4_ARR)* 100 = 50%
+    TIM4 Channel3 duty cycle = (TIM4_CCR3/ TIM4_ARR)* 100 = 50%
+    TIM4 Channel4 duty cycle = (TIM4_CCR4/ TIM4_ARR)* 100 = 50%
+    
+    ==> TIM4_CCRx = TIM4_ARR/2 = 1000  (where x = 1, 2, 3 and 4).
+  
+    Note: 
+     SystemCoreClock variable holds HCLK frequency and is defined in system_stm32f4xx.c file.
+     Each time the core clock (HCLK) changes, user had to call SystemCoreClockUpdate()
+     function to update SystemCoreClock variable value. Otherwise, any configuration
+     based on this variable will be incorrect.    
+  ----------------------------------------------------------------------- */ 
+  
+  
+  /* Compute the prescaler value */
+  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 2000) - 1;
+  
+  /* Time base configuration */
+  TIM_TimeBaseStructure.TIM_Period = TIM_ARR;
+  TIM_TimeBaseStructure.TIM_Prescaler = PrescalerValue;
+  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+  TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
+  
+  /* Enable TIM4 Preload register on ARR */
+  TIM_ARRPreloadConfig(TIM4, ENABLE);
+  
+  /* TIM PWM1 Mode configuration: Channel */
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
+  TIM_OCInitStructure.TIM_Pulse = TIM_CCR;
+  TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+  
+  /* Output Compare PWM1 Mode configuration: Channel1 */
+  TIM_OC1Init(TIM4, &TIM_OCInitStructure);
+  TIM_CCxCmd(TIM4, TIM_Channel_1, DISABLE);
+  
+  TIM_OC1PreloadConfig(TIM4, TIM_OCPreload_Enable);
+  
+  /* Output Compare PWM1 Mode configuration: Channel2 */
+  TIM_OC2Init(TIM4, &TIM_OCInitStructure);
+  TIM_CCxCmd(TIM4, TIM_Channel_2, DISABLE);
+  
+  TIM_OC2PreloadConfig(TIM4, TIM_OCPreload_Enable);
+    
+  /* Output Compare PWM1 Mode configuration: Channel3 */
+  TIM_OC3Init(TIM4, &TIM_OCInitStructure);
+  TIM_CCxCmd(TIM4, TIM_Channel_3, DISABLE);
+  
+  TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);
+  
+  /* Output Compare PWM1 Mode configuration: Channel4 */
+  TIM_OC4Init(TIM4, &TIM_OCInitStructure);
+  TIM_CCxCmd(TIM4, TIM_Channel_4, DISABLE);
+  
+  TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable);
+  
+  /* TIM4 enable counter */
+  TIM_Cmd(TIM4, ENABLE);
+}
+
+/**
+  * @brief Test MEMS Hardware.
+  *   The main objectif of this test is to check the hardware connection of the 
+  *   MEMS peripheral.
+  * @param None
+  * @retval None
+  */
+void Accelerometer_MEMS_Test(void)
+{
+  uint8_t temp, memsteststatus = 0x00;
+  uint8_t xdata, ydata = 0;
+  
+  /* MEMS configuration ------------------------------------------------------*/
+  /* Set configuration of LIS302DL*/
+  LIS302DL_InitStruct.Power_Mode = LIS302DL_LOWPOWERMODE_ACTIVE;
+  LIS302DL_InitStruct.Output_DataRate = LIS302DL_DATARATE_100;
+  LIS302DL_InitStruct.Axes_Enable = LIS302DL_X_ENABLE | LIS302DL_Y_ENABLE;
+  LIS302DL_InitStruct.Full_Scale = LIS302DL_FULLSCALE_2_3;
+  LIS302DL_InitStruct.Self_Test = LIS302DL_SELFTEST_M;
+  LIS302DL_Init(&LIS302DL_InitStruct);
+  
+  /* Set configuration of Internal High Pass Filter of LIS302DL*/
+  LIS302DL_FilterStruct.HighPassFilter_Data_Selection = LIS302DL_FILTEREDDATASELECTION_OUTPUTREGISTER;
+  LIS302DL_FilterStruct.HighPassFilter_CutOff_Frequency = LIS302DL_HIGHPASSFILTER_LEVEL_1;
+  LIS302DL_FilterStruct.HighPassFilter_Interrupt = LIS302DL_HIGHPASSFILTERINTERRUPT_1_2;
+  LIS302DL_FilterConfig(&LIS302DL_FilterStruct);
+  
+  /* Required delay for the MEMS Accelerometre: Turn-on time = 3/Output data Rate 
+                                                             = 3/100 = 30ms */
+  Delay(30);
+  
+  /* Read WHO_AM_I register */
+  LIS302DL_Read(&temp, LIS302DL_WHO_AM_I_ADDR, 1);
+  
+  /* Check device identification register, this register should contains 
+  the device identifier that for LIS302DL is set to 0x3B */
+  if (temp != 0x3B)
+  {
+    Fail_Handler();
+  }
+
+  TimingDelay = 2000;
+  /* Wait until detecting all MEMS direction or timeout */
+  while((memsteststatus == 0x00)&&(TimingDelay != 0x00))
+  {
+    LIS302DL_Read(Buffer, LIS302DL_OUT_X_ADDR, 4);
+    xdata = ABS((int8_t)(Buffer[0]));
+    ydata = ABS((int8_t)(Buffer[2]));
+    /* Check test PASS condition */   
+    if ((xdata > MEMS_PASSCONDITION) || (ydata > MEMS_PASSCONDITION)) 
+    {
+      /* MEMS Test PASS */
+      memsteststatus = 0x01;
+    }
+  }
+  
+  /* MEMS test status: PASS */ 
+  if(memsteststatus != 0x00)
+  {
+    /* Turn Green LED ON: signaling MEMS Test PASS */
+    STM_EVAL_LEDOn(LED4);
+    
+    /* Waiting User Button is pressed */
+    while (STM_EVAL_PBGetState(BUTTON_USER) == Bit_RESET)
+    {}
+    
+    /* Waiting User Button is Released */
+    while (STM_EVAL_PBGetState(BUTTON_USER) == Bit_SET)
+    {}
+    
+    /* Turn Green LED OFF: signaling the end of MEMS Test and switching to 
+       the next Sub Test */
+    STM_EVAL_LEDOff(LED4);
+  }
+  /* MEMS test status: Timeout occurs */
+  else
+  {
+    Fail_Handler();
+  }
+}
+
+
+/**
+  * @brief  MEMS accelerometre management of the timeout situation.
+  * @param  None.
+  * @retval None.
+  */
+uint32_t LIS302DL_TIMEOUT_UserCallback(void)
+{
+    /* Timeout error occured for SPI TXE/RXNE flags waiting loops.*/
+  Fail_Handler();    
+
+  return 0;  
 }
 
 

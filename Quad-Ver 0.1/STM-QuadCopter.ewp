@@ -166,6 +166,9 @@
           <name>CCDefines</name>
           <state>USE_STDPERIPH_DRIVER</state>
           <state>STM32F4XX</state>
+          <state>ECHOMODE</state>
+          <state>USE_USB_OTG_FS </state>
+          <state>USE_STM324xG_EVAL</state>
         </option>
         <option>
           <name>CCPreprocFile</name>
@@ -298,6 +301,10 @@
           <state>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\</state>
           <state>$PROJ_DIR$\STM32F4-Discovery\</state>
           <state>$PROJ_DIR$\CMSIS</state>
+          <state>$PROJ_DIR$\STM32_USB_Device_Library\Core\inc</state>
+          <state>$PROJ_DIR$\STM32_USB_Device_Library\Class\cdc\inc</state>
+          <state>$PROJ_DIR$\STM32_USB_Device_Library\User</state>
+          <state>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1829,6 +1836,9 @@
     <file>
       <name>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery.c</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery_lis302dl.c</name>
+    </file>
   </group>
   <group>
     <name>STM32F4xx_StdPeriph_Driver</name>
@@ -1845,10 +1855,70 @@
       <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c</name>
+    </file>
+  </group>
+  <group>
+    <name>USB Device</name>
+    <group>
+      <name>Class</name>
+      <group>
+        <name>CDC</name>
+        <file>
+          <name>$PROJ_DIR$\STM32_USB_Device_Library\Class\cdc\src\usbd_cdc_core.c</name>
+        </file>
+      </group>
+    </group>
+    <group>
+      <name>Library</name>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_core.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_ioreq.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_req.c</name>
+      </file>
+    </group>
+    <group>
+      <name>User</name>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usb_bsp.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_cdc_vcp.c</name>
+        <excluded>
+          <configuration>Debug</configuration>
+        </excluded>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_desc.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_usr.c</name>
+        <excluded>
+          <configuration>Debug</configuration>
+        </excluded>
+      </file>
+    </group>
+  </group>
+  <group>
+    <name>USB Drivers</name>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_core.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd_int.c</name>
     </file>
   </group>
   <group>
