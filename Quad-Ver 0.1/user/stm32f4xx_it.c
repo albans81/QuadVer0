@@ -80,6 +80,8 @@ void SysTick_Handler(void)
     /* Remove the offsets values from data */
     //Buffer[0] -= X_Offset;
     //Buffer[2] -= Y_Offset;
+    uint16_t *pwm1 = (uint16_t*)&Buffer[6];
+    *pwm1 = CCR1_Val;
     if (SendSerial){
       DCD_EP_Tx (&USB_OTG_dev,
                CDC_IN_EP,

@@ -118,7 +118,8 @@ CDC_IF_Prop_TypeDef;
 /** @defgroup USBD_CORE_Exported_Variables
   * @{
   */ 
-
+extern uint16_t USB_Rx_Cnt;
+extern uint8_t USB_Rx_Buffer[];
 extern USBD_Class_cb_TypeDef  USBD_CDC_cb;
 /**
   * @}

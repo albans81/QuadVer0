@@ -157,6 +157,7 @@ void MainWindow::readData()
     ui->accy->display(in[2]);
     pCubeWidget->rotation *= QQuaternion::fromAxisAndAngle(QVector3D(0,0,1), in[0]);
     ui->accz->display(in[4]);
+    ui->pwm_1->display(in[6]);
     in.clear();
     //in.append(13);
     //console->putData(in);

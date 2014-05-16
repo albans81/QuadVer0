@@ -28,7 +28,7 @@ extern uint16_t CCR3_Val;
 extern uint16_t CCR4_Val;
 extern uint32_t TimingDelay;
 extern uint8_t Counter;
-extern uint8_t Buffer[6];
+extern uint8_t Buffer[14];
 
 /* Exported macro ------------------------------------------------------------*/
 #define ABS(x)         (x < 0) ? (-x) : x
@@ -37,3 +37,4 @@ extern uint8_t Buffer[6];
 /* Exported functions ------------------------------------------------------- */
 void TimingDelay_Decrement(void);
 void DelayBotton(__IO uint32_t nTime);
+void CommandHandler (uint8_t* buffer,uint16_t buf_len);

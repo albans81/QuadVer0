@@ -51,7 +51,7 @@ uint16_t CCR3_Val = 200;//esempio 166;
 uint16_t CCR4_Val = 200;//esempio 83;
 uint16_t PrescalerValue = 0;
 uint8_t Counter  = 0xff;
-uint8_t Buffer[6];
+uint8_t Buffer[14];
 uint32_t TimingDelay;
 
 
@@ -223,7 +223,37 @@ int main(void)
   Counter = 0;
   
   while (1)
-  {}
+  {
+    if(USB_Rx_Cnt != 0){
+      CommandHandler(USB_Rx_Buffer,USB_Rx_Cnt);
+      USB_Rx_Cnt = 0;
+    }  
+  }
+}
+
+
+void CommandHandler (uint8_t* buffer,uint16_t buf_len){
+  uint8_t i = 0;
+  uint16_t tmp = CCR1_Val;
+  
+  while(buf_len != 0){
+    switch (buffer[i]){
+    case 'a':
+      CCR1_Val = tmp++;
+      TIM3->CCR1 = CCR1_Val; 
+      break;
+    case 'b':
+      CCR1_Val = tmp--;
+      TIM3->CCR1 = CCR1_Val;
+      break;
+    case 'c':
+      break;
+    case 'd':
+      break;
+    }
+    i++;
+    buf_len--;
+  }
 }
 
 /**

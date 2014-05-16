@@ -184,6 +184,7 @@ uint32_t APP_Rx_ptr_out = 0;
 uint32_t APP_Rx_length  = 0;
 
 uint8_t  USB_Tx_State = 0;
+uint16_t USB_Rx_Cnt;
 
 static uint32_t cdcCmd = 0xFF;
 //static uint32_t cdcLen = 0;
@@ -669,8 +670,7 @@ static uint8_t  usbd_cdc_DataIn (void *pdev, uint8_t epnum)
   * @retval status
   */
 static uint8_t  usbd_cdc_DataOut (void *pdev, uint8_t epnum)
-{      
-  uint16_t USB_Rx_Cnt;
+{    
   
   /* Get the received data buffer and update the counter */
   USB_Rx_Cnt = ((USB_OTG_CORE_HANDLE*)pdev)->dev.out_ep[epnum].xfer_count;
