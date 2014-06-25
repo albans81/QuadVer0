@@ -67,6 +67,7 @@
 #include "usbd_cdc_core.h"
 #include "usbd_desc.h"
 #include "usbd_req.h"
+#include "main.h"    
 
 
 /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
@@ -184,7 +185,6 @@ uint32_t APP_Rx_ptr_out = 0;
 uint32_t APP_Rx_length  = 0;
 
 uint8_t  USB_Tx_State = 0;
-uint16_t USB_Rx_Cnt;
 
 static uint32_t cdcCmd = 0xFF;
 //static uint32_t cdcLen = 0;
@@ -670,7 +670,8 @@ static uint8_t  usbd_cdc_DataIn (void *pdev, uint8_t epnum)
   * @retval status
   */
 static uint8_t  usbd_cdc_DataOut (void *pdev, uint8_t epnum)
-{    
+{      
+  uint16_t USB_Rx_Cnt;
   
   /* Get the received data buffer and update the counter */
   USB_Rx_Cnt = ((USB_OTG_CORE_HANDLE*)pdev)->dev.out_ep[epnum].xfer_count;
@@ -687,7 +688,13 @@ static uint8_t  usbd_cdc_DataOut (void *pdev, uint8_t epnum)
              (uint8_t*)USB_Rx_Buffer,
              USB_Rx_Cnt);
 #endif
-  
+  if (USB_Rx_Cnt == 2){
+    CCR1_Val = USB_Rx_Buffer[0]+(USB_Rx_Buffer[1]<<8);
+    TIM3->CCR1 = CCR1_Val;
+    TIM3->CCR2 = CCR1_Val;
+    TIM3->CCR3 = CCR1_Val;
+    TIM3->CCR4 = CCR1_Val;
+  }
   /* Prepare Out endpoint to receive next packet */
   DCD_EP_PrepareRx(pdev,
                    CDC_OUT_EP,

@@ -45,13 +45,13 @@ TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 TIM_OCInitTypeDef  TIM_OCInitStructure;
 LIS302DL_InitTypeDef  LIS302DL_InitStruct;
 LIS302DL_FilterConfigTypeDef LIS302DL_FilterStruct;
-uint16_t CCR1_Val = 200;// esempio 333;
-uint16_t CCR2_Val = 200;//esempio 249;
-uint16_t CCR3_Val = 200;//esempio 166;
-uint16_t CCR4_Val = 200;//esempio 83;
+uint16_t CCR1_Val = 2000;// esempio 333;
+uint16_t CCR2_Val = 2000;//esempio 249;
+uint16_t CCR3_Val = 2000;//esempio 166;
+uint16_t CCR4_Val = 2000;//esempio 83;
 uint16_t PrescalerValue = 0;
 uint8_t Counter  = 0xff;
-uint8_t Buffer[14];
+uint8_t Buffer[8];
 uint32_t TimingDelay;
 
 
@@ -134,8 +134,8 @@ int main(void)
   PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 28000000) - 1;
 
   /* Time base configuration */
-  TIM_TimeBaseStructure.TIM_Period = 2000; //665 per 42 Khz dell'esempio, 559 per avere 50Khz
-  TIM_TimeBaseStructure.TIM_Prescaler = 840;//prescalerValue;
+  TIM_TimeBaseStructure.TIM_Period = 20000; //665 per 42 Khz dell'esempio, 559 per avere 50Khz
+  TIM_TimeBaseStructure.TIM_Prescaler = 84;//prescalerValue;
   TIM_TimeBaseStructure.TIM_ClockDivision = 0;
   TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 
@@ -223,37 +223,7 @@ int main(void)
   Counter = 0;
   
   while (1)
-  {
-    if(USB_Rx_Cnt != 0){
-      CommandHandler(USB_Rx_Buffer,USB_Rx_Cnt);
-      USB_Rx_Cnt = 0;
-    }  
-  }
-}
-
-
-void CommandHandler (uint8_t* buffer,uint16_t buf_len){
-  uint8_t i = 0;
-  uint16_t tmp = CCR1_Val;
-  
-  while(buf_len != 0){
-    switch (buffer[i]){
-    case 'a':
-      CCR1_Val = tmp++;
-      TIM3->CCR1 = CCR1_Val; 
-      break;
-    case 'b':
-      CCR1_Val = tmp--;
-      TIM3->CCR1 = CCR1_Val;
-      break;
-    case 'c':
-      break;
-    case 'd':
-      break;
-    }
-    i++;
-    buf_len--;
-  }
+  {}
 }
 
 /**

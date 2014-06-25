@@ -77,16 +77,17 @@ void SysTick_Handler(void)
     TIM_CCxCmd(TIM4, TIM_Channel_4, DISABLE);
     
     LIS302DL_Read(Buffer, LIS302DL_OUT_X_ADDR, 6);
+    
+    Buffer[6] = (uint8_t) CCR1_Val;
+    Buffer[7] = CCR1_Val>>8;
     /* Remove the offsets values from data */
     //Buffer[0] -= X_Offset;
     //Buffer[2] -= Y_Offset;
-    uint16_t *pwm1 = (uint16_t*)&Buffer[6];
-    *pwm1 = CCR1_Val;
     if (SendSerial){
       DCD_EP_Tx (&USB_OTG_dev,
                CDC_IN_EP,
                (uint8_t*)Buffer,
-               6);
+               8);
     }
     /* Update autoreload and capture compare registers value*/
     temp1 = ABS((int8_t)(Buffer[0]));
@@ -220,16 +221,18 @@ void EXTI0_IRQHandler(void)
 {
   
   if (Counter != 0xff){
-    if (SendSerial == 1)
+    /*if (SendSerial == 1)
       SendSerial = 0;
     else
-      SendSerial = 1;
+      SendSerial = 1;*/
+    if (SendSerial == 0)
+      SendSerial = 1;    
   }
   
   uint16_t tmp = CCR1_Val;
-  if ( CCR1_Val == 200 )
-    tmp = 95;
-  CCR1_Val = tmp + 5;
+  if ( CCR1_Val == 2000 )
+    tmp = 950;
+  CCR1_Val = tmp + 50;
   TIM3->CCR1 = CCR1_Val;  
   TIM3->CCR2 = CCR1_Val;  
   TIM3->CCR3 = CCR1_Val;  
