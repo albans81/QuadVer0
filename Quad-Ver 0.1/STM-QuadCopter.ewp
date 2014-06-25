@@ -29,8 +29,8 @@
         </option>
         <option>
           <name>Variant</name>
-          <version>19</version>
-          <state>38</state>
+          <version>20</version>
+          <state>39</state>
         </option>
         <option>
           <name>GEndianMode</name>
@@ -87,7 +87,7 @@
         </option>
         <option>
           <name>OGLastSavedByProductVersion</name>
-          <state>6.30.1.53141</state>
+          <state>6.50.3.4744</state>
         </option>
         <option>
           <name>GeneralEnableMisra</name>
@@ -99,7 +99,7 @@
         </option>
         <option>
           <name>OGChipSelectEditMenu</name>
-          <state>STM32F4xxx	ST STM32F4xxx</state>
+          <state>STM32F407VG	ST STM32F407VG</state>
         </option>
         <option>
           <name>GenLowLevelInterface</name>
@@ -137,13 +137,13 @@
         </option>
         <option>
           <name>GFPUCoreSlave</name>
-          <version>19</version>
-          <state>38</state>
+          <version>20</version>
+          <state>39</state>
         </option>
         <option>
           <name>GBECoreSlave</name>
-          <version>19</version>
-          <state>38</state>
+          <version>20</version>
+          <state>39</state>
         </option>
         <option>
           <name>OGUseCmsis</name>
@@ -163,9 +163,15 @@
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
+          <name>CCOptimizationNoSizeConstraints</name>
+          <state>0</state>
+        </option>
+        <option>
           <name>CCDefines</name>
           <state>USE_STDPERIPH_DRIVER</state>
           <state>STM32F4XX</state>
+          <state>USE_USB_OTG_FS </state>
+          <state>USE_STM324xG_EVAL</state>
         </option>
         <option>
           <name>CCPreprocFile</name>
@@ -298,6 +304,10 @@
           <state>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\</state>
           <state>$PROJ_DIR$\STM32F4-Discovery\</state>
           <state>$PROJ_DIR$\CMSIS</state>
+          <state>$PROJ_DIR$\STM32_USB_Device_Library\Core\inc</state>
+          <state>$PROJ_DIR$\STM32_USB_Device_Library\Class\cdc\inc</state>
+          <state>$PROJ_DIR$\STM32_USB_Device_Library\User</state>
+          <state>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -609,7 +619,7 @@
       <name>ILINK</name>
       <archiveVersion>0</archiveVersion>
       <data>
-        <version>14</version>
+        <version>15</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>1</debug>
         <option>
@@ -778,10 +788,6 @@
           <state>1</state>
         </option>
         <option>
-          <name>CrcAlgo</name>
-          <state>1</state>
-        </option>
-        <option>
           <name>CrcPoly</name>
           <state>0x11021</state>
         </option>
@@ -883,6 +889,16 @@
           <name>IlinkStackCallGraphFile</name>
           <state></state>
         </option>
+        <option>
+          <name>CrcAlgorithm</name>
+          <version>0</version>
+          <state>1</state>
+        </option>
+        <option>
+          <name>CrcUnitSize</name>
+          <version>0</version>
+          <state>0</state>
+        </option>
       </data>
     </settings>
     <settings>
@@ -939,7 +955,7 @@
         </option>
         <option>
           <name>Variant</name>
-          <version>19</version>
+          <version>20</version>
           <state>0</state>
         </option>
         <option>
@@ -1047,12 +1063,12 @@
         </option>
         <option>
           <name>GFPUCoreSlave</name>
-          <version>19</version>
+          <version>20</version>
           <state>1</state>
         </option>
         <option>
           <name>GBECoreSlave</name>
-          <version>19</version>
+          <version>20</version>
           <state>1</state>
         </option>
         <option>
@@ -1072,6 +1088,10 @@
         <version>28</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>0</debug>
+        <option>
+          <name>CCOptimizationNoSizeConstraints</name>
+          <state>0</state>
+        </option>
         <option>
           <name>CCDefines</name>
           <state>NDEBUG</state>
@@ -1515,7 +1535,7 @@
       <name>ILINK</name>
       <archiveVersion>0</archiveVersion>
       <data>
-        <version>14</version>
+        <version>15</version>
         <wantNonLocal>1</wantNonLocal>
         <debug>0</debug>
         <option>
@@ -1684,10 +1704,6 @@
           <state>1</state>
         </option>
         <option>
-          <name>CrcAlgo</name>
-          <state>1</state>
-        </option>
-        <option>
           <name>CrcPoly</name>
           <state>0x11021</state>
         </option>
@@ -1789,6 +1805,16 @@
           <name>IlinkStackCallGraphFile</name>
           <state></state>
         </option>
+        <option>
+          <name>CrcAlgorithm</name>
+          <version>0</version>
+          <state>1</state>
+        </option>
+        <option>
+          <name>CrcUnitSize</name>
+          <version>0</version>
+          <state>0</state>
+        </option>
       </data>
     </settings>
     <settings>
@@ -1829,6 +1855,9 @@
     <file>
       <name>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery.c</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery_lis302dl.c</name>
+    </file>
   </group>
   <group>
     <name>STM32F4xx_StdPeriph_Driver</name>
@@ -1845,10 +1874,70 @@
       <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c</name>
+    </file>
+  </group>
+  <group>
+    <name>USB Device</name>
+    <group>
+      <name>Class</name>
+      <group>
+        <name>CDC</name>
+        <file>
+          <name>$PROJ_DIR$\STM32_USB_Device_Library\Class\cdc\src\usbd_cdc_core.c</name>
+        </file>
+      </group>
+    </group>
+    <group>
+      <name>Library</name>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_core.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_ioreq.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_req.c</name>
+      </file>
+    </group>
+    <group>
+      <name>User</name>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usb_bsp.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_cdc_vcp.c</name>
+        <excluded>
+          <configuration>Debug</configuration>
+        </excluded>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_desc.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_usr.c</name>
+        <excluded>
+          <configuration>Debug</configuration>
+        </excluded>
+      </file>
+    </group>
+  </group>
+  <group>
+    <name>USB Drivers</name>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_core.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd_int.c</name>
     </file>
   </group>
   <group>

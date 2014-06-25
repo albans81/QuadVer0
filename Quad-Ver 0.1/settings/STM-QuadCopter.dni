@@ -21,7 +21,7 @@ ActionState=1
 Enabled=0
 ShowSource=1
 [DebugChecksum]
-Checksum=-94400305
+Checksum=-231646861
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -46,6 +46,8 @@ ITMportsEnable=0
 ITMportsTermIO=0
 ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
+[watch_formats]
+Fmt0={W}0:CCR1_Val	4	4
 [DataLog]
 LogEnabled=0
 SumEnabled=0
@@ -68,6 +70,7 @@ LoggingEnabled=_ 0
 LogFile=_ ""
 [Trace2]
 Enabled=0
+ShowSource=0
 [SWOTraceWindow]
 PcSampling=0
 InterruptLogs=0
@@ -90,5 +93,6 @@ mode=0
 [Breakpoints2]
 Count=0
 [Aliases]
-Count=0
-SuppressDialog=0
+A0=_ "D:\Personale\PSI_PROJECT\Quad-Ver 0.1\STM32_USB_Device_Library\Core\src\usbd_core.c" "D:\PSI_PROJECT_ con usb seriale\Quad-Ver 0.1\STM32_USB_Device_Library\Core\src\usbd_core.c"
+Count=1
+SuppressDialog=1
