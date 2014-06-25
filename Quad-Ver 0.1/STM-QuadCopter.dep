@@ -6,171 +6,148 @@
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery_lis302dl.c</file>
       <file>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery.c</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c</file>
+      <file>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery_lis302dl.c</file>
       <file>$PROJ_DIR$\user\startup_stm32f4xx.s</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Class\cdc\src\usbd_cdc_core.c</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.c</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\misc.c</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.c</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\usbd_req.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\usbd_core.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\misc.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\usbd_ioreq.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\usbd_req.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\usbd_ioreq.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\usb_dcd.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\usbd_cdc_vcp.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\usb_bsp.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f4_discovery_lis302dl.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_spi.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_spi.o</file>
-      <file>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery_lis302dl.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\usbd_desc.o</file>
-      <file>$PROJ_DIR$\user\main.h</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\inc\usbd_ioreq.h</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\inc\usbd_core.h</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h</file>
-      <file>$PROJ_DIR$\CMSIS\system_stm32f4xx.c</file>
-      <file>$PROJ_DIR$\CMSIS\core_cm4.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\usb_dcd_int.o</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\usb_core.o</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.o</file>
-      <file>$PROJ_DIR$\user\stm32f4xx_it.c</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h</file>
-      <file>$PROJ_DIR$\CMSIS\system_stm32f4xx.h</file>
-      <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Class\cdc\src\usbd_cdc_core.c</file>
       <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_ioreq.c</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4_discovery.o</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_exti.o</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h</file>
       <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_cdc_vcp.h</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd.c</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd_int.c</file>
-      <file>$PROJ_DIR$\user\system_stm32f4xx.c</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_core.c</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_syscfg.pbi</file>
+      <file>$PROJ_DIR$\CMSIS\core_cm4_simd.h</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h</file>
-      <file>$PROJ_DIR$\CMSIS\stm32f4xx.h</file>
       <file>$PROJ_DIR$\user\stm32f4xx_flash.icf</file>
-      <file>$PROJ_DIR$\CMSIS\core_cm4_simd.h</file>
+      <file>$PROJ_DIR$\CMSIS\stm32f4xx.h</file>
       <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_usr.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_tim.o</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_tim.o</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_gpio.o</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h</file>
       <file>$PROJ_DIR$\Debug\Obj\system_stm32f4xx.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_rcc.pbi</file>
       <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_req.c</file>
       <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_conf.h</file>
       <file>$PROJ_DIR$\Debug\Obj\usbd_cdc_core.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\usbd_usr.o</file>
       <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
       <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h</file>
       <file>$PROJ_DIR$\Debug\Obj\usb_bsp.o</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4_discovery_lis302dl.o</file>
       <file>$PROJ_DIR$\Debug\Obj\usbd_cdc_core.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\usbd_core.o</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc\usb_bsp.h</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc\usb_defines.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\usbd_core.o</file>
       <file>$PROJ_DIR$\Debug\Obj\usb_dcd_int.pbi</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usb_bsp.c</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_desc.c</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_cdc_vcp.c</file>
-      <file>$PROJ_DIR$\user\main.c</file>
-      <file>$PROJ_DIR$\Debug\Exe\STM-QuadCopter.out</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_desc.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\STM-QuadCopter.out</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_syscfg.o</file>
       <file>$PROJ_DIR$\Debug\Obj\system_stm32f4xx.o</file>
       <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
       <file>$PROJ_DIR$\Debug\Obj\startup_stm32f4xx.o</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\misc.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\misc.pbi</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_it.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\misc.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_gpio.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\usb_core.pbi</file>
       <file>$PROJ_DIR$\CMSIS\core_cmInstr.h</file>
       <file>$PROJ_DIR$\user\stm32f4xx_it.h</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\inc\usbd_def.h</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_core.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_ioreq.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_req.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usb_bsp.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_cdc_vcp.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_desc.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_usr.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_core.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd.c</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd_int.c</file>
+      <file>$PROJ_DIR$\user\system_stm32f4xx.c</file>
+      <file>$PROJ_DIR$\user\stm32f4xx_it.c</file>
+      <file>$PROJ_DIR$\user\main.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\usbd_core.pbi</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\usbd_req.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\usbd_ioreq.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\usbd_cdc_vcp.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\usb_dcd.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\misc.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\usbd_ioreq.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\usbd_req.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\usb_bsp.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f4_discovery_lis302dl.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_spi.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_spi.o</file>
+      <file>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery_lis302dl.h</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\inc\usbd_ioreq.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\usbd_desc.o</file>
+      <file>$PROJ_DIR$\CMSIS\system_stm32f4xx.c</file>
+      <file>$PROJ_DIR$\user\main.h</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\inc\usbd_core.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\usb_core.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\usb_dcd_int.o</file>
+      <file>$PROJ_DIR$\CMSIS\core_cm4.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h</file>
+      <file>$PROJ_DIR$\CMSIS\system_stm32f4xx.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+      <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\Class\cdc\inc\usbd_cdc_core.h</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\inc\usbd_req.h</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\inc\usbd_usr.h</file>
       <file>$PROJ_DIR$\user\stm32f4xx_conf.h</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h</file>
       <file>$PROJ_DIR$\Debug\Obj\usbd_desc.pbi</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h</file>
       <file>$PROJ_DIR$\Debug\Obj\usbd_usr.pbi</file>
       <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$PROJ_DIR$\CMSIS\core_cmFunc.h</file>
       <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+      <file>$PROJ_DIR$\CMSIS\core_cmFunc.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
       <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
-      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4_discovery.pbi</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc\usb_dcd.h</file>
+      <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\User\usb_conf.h</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc\usb_dcd_int.h</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc\usb_dcd.h</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_tim.pbi</file>
+      <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc\usb_dcd_int.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_it.pbi</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h</file>
       <file>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_it.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_exti.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\STM-QuadCopter.pbd</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc\usb_regs.h</file>
       <file>$PROJ_DIR$\STM32_USB_Device_Library\Driver\inc\usb_core.h</file>
       <file>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery.h</file>
       <file>$PROJ_DIR$\Debug\Obj\usb_dcd.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\STM-QuadCopter.pbd</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_rcc.o</file>
-      <file>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_core.c</file>
     </outputs>
-    <file>
-      <name>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery_lis302dl.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 23</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 86</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 26 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 26 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
-        </tool>
-      </inputs>
-    </file>
     <file>
       <name>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery.c</name>
       <outputs>
@@ -180,40 +157,40 @@
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 49</file>
+          <file> 13</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 136 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
+          <file> 138 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 136 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
+          <file> 138 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c</name>
+      <name>$PROJ_DIR$\STM32F4-Discovery\stm32f4_discovery_lis302dl.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 107</file>
+          <file> 91</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 73</file>
+          <file> 44</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 39 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
+          <file> 94 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 39 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
+          <file> 94 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
         </tool>
       </inputs>
     </file>
@@ -222,76 +199,30 @@
       <outputs>
         <tool>
           <name>AARM</name>
-          <file> 101</file>
+          <file> 55</file>
         </tool>
       </outputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c</name>
+      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\misc.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 75</file>
+          <file> 60</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 139</file>
+          <file> 86</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 43 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 40 105 72 63 52 31 102 131 103</file>
+          <file> 56 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 43 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 40 105 72 63 52 31 102 131 103</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\STM32_USB_Device_Library\Class\cdc\src\usbd_cdc_core.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 80</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 87</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 112 29 111 79 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 30 126 135 134 89 97 113 28</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 112 29 111 79 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 30 126 135 134 89 97 113 28</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 61</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 98</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 52 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 31 102 131 103</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 52 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 31 102 131 103</file>
+          <file> 56 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133</file>
         </tool>
       </inputs>
     </file>
@@ -300,21 +231,113 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 133</file>
+          <file> 134</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 51</file>
+          <file> 14</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 48 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
+          <file> 12 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 48 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
+          <file> 12 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 61</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 31</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 108 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 108 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 140</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 105 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 109 58 32 24 17 100 57 133 56</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 105 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 109 58 32 24 17 100 57 133 56</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 92</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 93</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 24 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 17 100 57 133 56</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 24 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 17 100 57 133 56</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 52</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 17 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 100 57 133 56</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 17 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 100 57 133 56</file>
         </tool>
       </inputs>
     </file>
@@ -327,63 +350,40 @@
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 71</file>
+          <file> 28</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 31 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 102 131 103</file>
+          <file> 100 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 57 133 56</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 31 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 102 131 103</file>
+          <file> 100 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 57 133 56</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\misc.c</name>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Class\cdc\src\usbd_cdc_core.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 104</file>
+          <file> 38</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 14</file>
+          <file> 45</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 103 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131</file>
+          <file> 113 95 65 37 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 99 128 137 136 48 50 114 98</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 103 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 24</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 25</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 63 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 52 31 102 131 103</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 63 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 52 31 102 131 103</file>
+          <file> 113 95 65 37 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 99 128 137 136 48 50 114 98</file>
         </tool>
       </inputs>
     </file>
@@ -392,43 +392,39 @@
       <outputs>
         <tool>
           <name>ILINK</name>
-          <file> 96</file>
+          <file> 51</file>
         </tool>
       </outputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\CMSIS\system_stm32f4xx.c</name>
-      <outputs>
+      <name>$PROJ_DIR$\Debug\Exe\STM-QuadCopter.out</name>
+      <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 74</file>
+          <name>ILINK</name>
+          <file> 25 111 86 55 13 44 14 31 59 140 93 52 28 53 42 101 85 102 45 46 96 87 81 27 11 54 112</file>
         </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 99</file>
-        </tool>
-      </outputs>
+      </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\user\stm32f4xx_it.c</name>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_core.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 132</file>
+          <file> 79</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 106</file>
+          <file> 46</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 110 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 136 26 28 112 29 111 79 127 30 126 135 134 89</file>
+          <file> 99 128 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 65 37 114 95 130 47</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 110 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 136 26 28 112 29 111 79 127 30 126 135 134 89</file>
+          <file> 99 128 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 65 37 114 95 130 47</file>
         </tool>
       </inputs>
     </file>
@@ -437,122 +433,30 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 18</file>
+          <file> 83</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 15</file>
+          <file> 87</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 29 111 79 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 30 126 135 134 89</file>
+          <file> 95 65 37 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 99 128 137 136 48</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 29 111 79 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 30 126 135 134 89</file>
+          <file> 95 65 37 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 99 128 137 136 48</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd.c</name>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_req.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 137</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 19</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 88</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 126 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 88</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd_int.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 91</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 34</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 128 126 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 128 126 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\user\system_stm32f4xx.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 74</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 99</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_core.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 108</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 36</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 88</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 88</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_usr.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 118</file>
+          <file> 88</file>
         </tool>
         <tool>
           <name>ICCARM</name>
@@ -562,34 +466,11 @@
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 114 30 126 135 127 64 33 83 82 76 53 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 111 79 29</file>
+          <file> 114 65 37 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 99 128 137 136 48 95 50</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 114 30 126 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 111 79 29</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_req.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 16</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 12</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 113 111 79 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 30 126 135 134 89 29 97</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 113 111 79 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 30 126 135 134 89 29 97</file>
+          <file> 114 65 37 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 99 128 137 136 48 95 50</file>
         </tool>
       </inputs>
     </file>
@@ -598,21 +479,40 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 21</file>
+          <file> 89</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 85</file>
+          <file> 42</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 88 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 79</file>
+          <file> 47 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 37</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 88 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 79</file>
+          <file> 47 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 37</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_cdc_vcp.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 84</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 113 95 65 37 127 26 103 41 40 35 16 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 99 128 137 136 48</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 113 95 65 37 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 99 128 137 136 48</file>
         </tool>
       </inputs>
     </file>
@@ -625,36 +525,155 @@
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 27</file>
+          <file> 96</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 30 126 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 111 79 97 113</file>
+          <file> 99 128 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 65 37 50 114</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 30 126 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 111 79 97 113</file>
+          <file> 99 128 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 65 37 50 114</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_cdc_vcp.c</name>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_usr.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 20</file>
+          <file> 119</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 39</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 54 112 29 111 79 127 64 33 83 82 76 53 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 30 126 135 134 89</file>
+          <file> 115 99 128 137 127 26 103 41 40 35 16 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 65 37 95</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 54 112 29 111 79 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 30 126 135 134 89</file>
+          <file> 115 99 128 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 65 37 95</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_core.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 62</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 101</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 47</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 47</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 139</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 85</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 128 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 47</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 128 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48 47</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\Driver\src\usb_dcd_int.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 102</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 130 128 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 130 128 137 127 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 136 48</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\user\system_stm32f4xx.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 53</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\user\stm32f4xx_it.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 131</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 59</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 64 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 138 94 98 113 95 65 37 127 99 128 137 136 48</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 64 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 138 94 98 113 95 65 37 127 99 128 137 136 48</file>
         </tool>
       </inputs>
     </file>
@@ -663,58 +682,39 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 120</file>
+          <file> 123</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 41</file>
+          <file> 111</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 136 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 26 28 112 29 111 79 127 30 126 135 134 89 114 97</file>
+          <file> 138 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 94 98 113 95 65 37 127 99 128 137 136 48 115 50</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 136 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 26 28 112 29 111 79 127 30 126 135 134 89 114 97</file>
+          <file> 138 26 103 41 40 35 16 120 121 90 36 63 82 124 122 22 110 116 15 106 132 30 20 104 29 43 12 126 107 19 108 118 80 23 105 109 58 32 24 17 100 57 133 56 94 98 113 95 65 37 127 99 128 137 136 48 115 50</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\Debug\Exe\STM-QuadCopter.out</name>
-      <inputs>
-        <tool>
-          <name>ILINK</name>
-          <file> 65 41 14 101 49 86 51 73 106 139 25 98 71 99 85 36 19 34 87 90 27 15 12 67 46 100 45</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\STM32_USB_Device_Library\Core\src\usbd_core.c</name>
+      <name>$PROJ_DIR$\CMSIS\system_stm32f4xx.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 13</file>
+          <file> 33</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 90</file>
+          <file> 53</file>
         </tool>
       </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 30 126 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 111 79 113 29 128 88</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 30 126 135 127 64 33 83 82 76 53 119 122 22 78 109 17 123 121 66 44 115 50 37 130 70 55 35 69 84 48 124 38 60 39 116 11 62 43 40 105 72 63 52 31 102 131 103 134 89 111 79 113 29 128 88</file>
-        </tool>
-      </inputs>
     </file>
     <forcedrebuild>
-      <name>$PROJ_DIR$\CMSIS\system_stm32f4xx.c</name>
+      <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_cdc_vcp.c</name>
       <tool>ICCARM</tool>
     </forcedrebuild>
     <forcedrebuild>
@@ -722,7 +722,7 @@
       <tool>ICCARM</tool>
     </forcedrebuild>
     <forcedrebuild>
-      <name>$PROJ_DIR$\STM32_USB_Device_Library\User\usbd_cdc_vcp.c</name>
+      <name>$PROJ_DIR$\CMSIS\system_stm32f4xx.c</name>
       <tool>ICCARM</tool>
     </forcedrebuild>
   </configuration>
