@@ -72,6 +72,7 @@ public:
     double graph_value[20];
     int indice_acc;
     int dev_accy;
+    double dev_weight;
 
 private slots:
     void openSerialPort();
@@ -82,6 +83,7 @@ private slots:
     void pid_control();
     void save_curve();
     void load_curve();
+    void set_derivativeweight();
     void reflesh_slider_value();
     QString HexToAscii(QString Str);
     QString AsciiToHex(QString Str);

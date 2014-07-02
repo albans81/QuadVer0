@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>907</width>
-    <height>955</height>
+    <width>912</width>
+    <height>949</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -292,6 +292,9 @@
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
@@ -846,13 +849,26 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QDoubleSpinBox" name="derivativeweight">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>760</y>
+      <width>62</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>907</width>
+     <width>912</width>
      <height>21</height>
     </rect>
    </property>

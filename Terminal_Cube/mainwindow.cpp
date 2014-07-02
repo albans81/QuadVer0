@@ -66,7 +66,9 @@ MainWindow::MainWindow(QWidget *parent) :
     Pwm_value = 0;
     indice_acc = 0;
     dev_accy = 0;
+    dev_weight = 2;
     /* Setting graph_value ed set pot */
+    ui->derivativeweight->setValue(dev_weight);
     for (int i = 0; i < 20; i++)
         graph_value[i] = i;
     setsliderpos();
@@ -92,6 +94,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(serial, SIGNAL(readyRead()), this, SLOT(pid_control()));
     connect(ui->savecurve,SIGNAL(clicked()),this,SLOT(save_curve()));
     connect(ui->loadcurve,SIGNAL(clicked()),this,SLOT(load_curve()));
+    connect(ui->derivativeweight,SIGNAL(valueChanged(double)),this,SLOT(set_derivativeweight()));
     connect(ui->verticalSlider_1,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
     connect(ui->verticalSlider_2,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
     connect(ui->verticalSlider_3,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
@@ -318,6 +321,11 @@ void MainWindow::reflesh_slider_value()
     graph_value[19] = ui->verticalSlider_20->value();
 }
 
+void MainWindow::set_derivativeweight()
+{
+    dev_weight = ui->derivativeweight->value();
+}
+
 void MainWindow::save_curve()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
@@ -348,8 +356,10 @@ void MainWindow::pid_control()
     double tmp_ist = 0;    
     int accy = ui->accy->value();
     int pos = (abs(accy))/2;
-    if (pos > 19)
+    if (pos > 19 && pos < 80)
         pos = 19;
+    else if (pos > 80)
+        pos = 0;
     tmp = (graph_value[pos])/1000;
     /*
     if (abs(accy) > 45){
@@ -369,9 +379,11 @@ void MainWindow::pid_control()
     }
     */
     int accy_ist = in[2];
-    pos = (abs(accy_ist + dev_accy*2))/2;
-    if (pos > 19)
+    pos = (abs(accy_ist + dev_accy*dev_weight))/2;
+    if (pos > 19 && pos < 80)
         pos = 19;
+    else if (pos > 80)
+        pos = 0;
     tmp_ist = (graph_value[pos])/1000;
 
     /*
