@@ -70,7 +70,6 @@ MainWindow::MainWindow(QWidget *parent) :
     indice_acc = 0;
     last_accy = 0;
     dev_accy = 0;
-<<<<<<< HEAD
     dev_weight = 0.20;
     Pro_weight = 0.81;
     Int_weight = 0.46;
@@ -91,11 +90,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->derivativeweight->setValue(dev_weight);
     ui->integrativeweight->setValue(Int_weight);
     ui->proportionalweight->setValue(Pro_weight);
-=======
+
     dev_weight = 2;
     /* Setting graph_value ed set pot */
     ui->derivativeweight->setValue(dev_weight);
->>>>>>> 2b6ba25f235d4428959590497650c593731f8e3f
+
     for (int i = 0; i < 20; i++)
         graph_value[i] = i;
     setsliderpos();
@@ -121,15 +120,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(serial, SIGNAL(readyRead()), this, SLOT(pid_control()));
     connect(ui->savecurve,SIGNAL(clicked()),this,SLOT(save_curve()));
     connect(ui->loadcurve,SIGNAL(clicked()),this,SLOT(load_curve()));
-<<<<<<< HEAD
+
     connect(ui->stop,SIGNAL(clicked()),this,SLOT(stop()));
     connect(ui->story_point_num,SIGNAL(valueChanged(int)),this,SLOT(story_point_set()));
     connect(ui->derivativeweight,SIGNAL(valueChanged(double)),this,SLOT(set_derivativeweight()));
     connect(ui->integrativeweight,SIGNAL(valueChanged(double)),this,SLOT(set_integrativeweight()));
     connect(ui->proportionalweight,SIGNAL(valueChanged(double)),this,SLOT(set_proportionalweight()));
-=======
     connect(ui->derivativeweight,SIGNAL(valueChanged(double)),this,SLOT(set_derivativeweight()));
->>>>>>> 2b6ba25f235d4428959590497650c593731f8e3f
     connect(ui->verticalSlider_1,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
     connect(ui->verticalSlider_2,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
     connect(ui->verticalSlider_3,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
@@ -364,7 +361,6 @@ void MainWindow::set_derivativeweight()
     dev_weight = ui->derivativeweight->value();
 }
 
-<<<<<<< HEAD
 void MainWindow::set_integrativeweight()
 {
     Int_weight = ui->integrativeweight->value();
@@ -375,8 +371,6 @@ void MainWindow::set_proportionalweight()
     Pro_weight = ui->proportionalweight->value();
 }
 
-=======
->>>>>>> 2b6ba25f235d4428959590497650c593731f8e3f
 void MainWindow::save_curve()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
@@ -436,7 +430,7 @@ void MainWindow::pid_control()
                  (deltatime / (filter + deltatime)) * (dTerm - last_derivative);
     last_derivative = dTerm;
 */
-    // TODO aggiungere un filtro passa basso per eliminare i disturbi dovuti alle vobrazioni del motore
+    // aggiungere un filtro passa basso per eliminare i disturbi dovuti alle vobrazioni del motore
     last_accy = accy_ist;
 
 
