@@ -68,10 +68,19 @@ public:
     QByteArray in;
     ~MainWindow();
     double Pwm_value;
-    int mdv[10];
+    double throttle;
+    float last_derivative;
+    float   filter;
+    int mdv[100];
+    double IntValue;
+    int last_accy;
     double graph_value[20];
     int indice_acc;
     int dev_accy;
+    double dev_weight;
+    double Pro_weight;
+    double Int_weight;
+    int story_point;
 
 private slots:
     void openSerialPort();
@@ -82,7 +91,13 @@ private slots:
     void pid_control();
     void save_curve();
     void load_curve();
+    void pid_control_lavendetta();
+    void story_point_set();
+    void set_derivativeweight();
+    void set_integrativeweight();
+    void set_proportionalweight();
     void reflesh_slider_value();
+    void stop();
     QString HexToAscii(QString Str);
     QString AsciiToHex(QString Str);
 

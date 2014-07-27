@@ -51,7 +51,7 @@ uint16_t CCR3_Val = 2000;//esempio 166;
 uint16_t CCR4_Val = 2000;//esempio 83;
 uint16_t PrescalerValue = 0;
 uint8_t Counter  = 0xff;
-uint8_t Buffer[8];
+uint8_t Buffer[10];
 uint32_t TimingDelay;
 
 
@@ -198,7 +198,7 @@ int main(void)
 
     /* MEMS configuration */
     LIS302DL_InitStruct.Power_Mode = LIS302DL_LOWPOWERMODE_ACTIVE;
-    LIS302DL_InitStruct.Output_DataRate = LIS302DL_DATARATE_400;
+    LIS302DL_InitStruct.Output_DataRate = LIS302DL_DATARATE_100;
     LIS302DL_InitStruct.Axes_Enable = LIS302DL_XYZ_ENABLE;
     LIS302DL_InitStruct.Full_Scale = LIS302DL_FULLSCALE_2_3;
     LIS302DL_InitStruct.Self_Test = LIS302DL_SELFTEST_NORMAL;
@@ -209,7 +209,7 @@ int main(void)
     Delay(30);
     
     /* MEMS High Pass Filter configuration */
-    LIS302DL_FilterStruct.HighPassFilter_Data_Selection = LIS302DL_FILTEREDDATASELECTION_OUTPUTREGISTER;
+    LIS302DL_FilterStruct.HighPassFilter_Data_Selection = LIS302DL_FILTEREDDATASELECTION_BYPASSED;
     LIS302DL_FilterStruct.HighPassFilter_CutOff_Frequency = LIS302DL_HIGHPASSFILTER_LEVEL_3;
     LIS302DL_FilterStruct.HighPassFilter_Interrupt = LIS302DL_HIGHPASSFILTERINTERRUPT_1_2;
     LIS302DL_FilterConfig(&LIS302DL_FilterStruct);

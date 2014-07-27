@@ -80,6 +80,8 @@ void SysTick_Handler(void)
     
     Buffer[6] = (uint8_t) CCR1_Val;
     Buffer[7] = CCR1_Val>>8;
+    Buffer[8] = (uint8_t) CCR2_Val;
+    Buffer[9] = CCR2_Val>>8;
     /* Remove the offsets values from data */
     //Buffer[0] -= X_Offset;
     //Buffer[2] -= Y_Offset;
@@ -87,7 +89,7 @@ void SysTick_Handler(void)
       DCD_EP_Tx (&USB_OTG_dev,
                CDC_IN_EP,
                (uint8_t*)Buffer,
-               8);
+               10);
     }
     /* Update autoreload and capture compare registers value*/
     temp1 = ABS((int8_t)(Buffer[0]));
@@ -233,7 +235,11 @@ void EXTI0_IRQHandler(void)
   if ( CCR1_Val == 2000 )
     tmp = 950;
   CCR1_Val = tmp + 50;
-  TIM3->CCR1 = CCR1_Val;  
+  uint16_t tmp_2 = CCR2_Val;
+  if ( CCR2_Val == 2000 )
+    tmp_2 = 950;
+  CCR2_Val = tmp_2 + 50;
+  TIM3->CCR1 = CCR2_Val;  
   TIM3->CCR2 = CCR1_Val;  
   TIM3->CCR3 = CCR1_Val;  
   TIM3->CCR4 = CCR1_Val;

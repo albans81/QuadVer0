@@ -49,6 +49,7 @@
 
 #include <QMessageBox>
 #include <QtSerialPort/QSerialPort>
+#include <QScrollArea>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -64,9 +65,31 @@ MainWindow::MainWindow(QWidget *parent) :
     console->adjustSize();
 
     Pwm_value = 0;
+    throttle = 1160;
+    IntValue = 0;
     indice_acc = 0;
+    last_accy = 0;
     dev_accy = 0;
+    dev_weight = 0.20;
+    Pro_weight = 0.81;
+    Int_weight = 0.46;
+    story_point = 10;
+    last_derivative = 0;
+    /// Low pass filter cut frequency for derivative calculation.
+    ///
+    filter = 7.9577e-3; // Set to  "1 / ( 2 * PI * f_cut )";
+    // Examples for _filter:
+    // f_cut = 10 Hz -> _filter = 15.9155e-3
+    // f_cut = 15 Hz -> _filter = 10.6103e-3
+    // f_cut = 20 Hz -> _filter =  7.9577e-3
+    // f_cut = 25 Hz -> _filter =  6.3662e-3
+    // f_cut = 30 Hz -> _filter =  5.3052e-3
+
+
     /* Setting graph_value ed set pot */
+    ui->derivativeweight->setValue(dev_weight);
+    ui->integrativeweight->setValue(Int_weight);
+    ui->proportionalweight->setValue(Pro_weight);
     for (int i = 0; i < 20; i++)
         graph_value[i] = i;
     setsliderpos();
@@ -92,6 +115,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(serial, SIGNAL(readyRead()), this, SLOT(pid_control()));
     connect(ui->savecurve,SIGNAL(clicked()),this,SLOT(save_curve()));
     connect(ui->loadcurve,SIGNAL(clicked()),this,SLOT(load_curve()));
+    connect(ui->stop,SIGNAL(clicked()),this,SLOT(stop()));
+    connect(ui->story_point_num,SIGNAL(valueChanged(int)),this,SLOT(story_point_set()));
+    connect(ui->derivativeweight,SIGNAL(valueChanged(double)),this,SLOT(set_derivativeweight()));
+    connect(ui->integrativeweight,SIGNAL(valueChanged(double)),this,SLOT(set_integrativeweight()));
+    connect(ui->proportionalweight,SIGNAL(valueChanged(double)),this,SLOT(set_proportionalweight()));
     connect(ui->verticalSlider_1,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
     connect(ui->verticalSlider_2,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
     connect(ui->verticalSlider_3,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
@@ -113,6 +141,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->verticalSlider_19,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
     connect(ui->verticalSlider_20,SIGNAL(valueChanged(int)),this,SLOT(reflesh_slider_value()));
     //connect(console, SIGNAL(getData(QByteArray)), this, SLOT(writeData(QByteArray)));
+
+    //QScrollArea* scrollArea = new QScrollArea(this);
+    //scrollArea->set
 }
 
 MainWindow::~MainWindow()
@@ -318,6 +349,21 @@ void MainWindow::reflesh_slider_value()
     graph_value[19] = ui->verticalSlider_20->value();
 }
 
+void MainWindow::set_derivativeweight()
+{
+    dev_weight = ui->derivativeweight->value();
+}
+
+void MainWindow::set_integrativeweight()
+{
+    Int_weight = ui->integrativeweight->value();
+}
+
+void MainWindow::set_proportionalweight()
+{
+    Pro_weight = ui->proportionalweight->value();
+}
+
 void MainWindow::save_curve()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
@@ -327,6 +373,10 @@ void MainWindow::save_curve()
     fp->open(QFile::WriteOnly);
     fp->write((char*)graph_value,sizeof(graph_value));
     fp->close();
+}
+void MainWindow::story_point_set()
+{
+    story_point = ui->story_point_num->value();
 }
 
 void MainWindow::load_curve()
@@ -342,14 +392,68 @@ void MainWindow::load_curve()
 
 }
 
+void MainWindow::stop(){
+    disconnect(serial, SIGNAL(readyRead()), this, SLOT(pid_control()));
+    double Pwm_stop = 1000;
+    QByteArray rr;
+    rr.append((quint16)Pwm_stop);
+    rr.append(((quint16)Pwm_stop)>>8);
+    rr.append((quint16)Pwm_stop);
+    rr.append(((quint16)Pwm_stop)>>8);
+    writeData(rr);    
+}
+                          ////PID///////////////////////////////////////
+
 void MainWindow::pid_control()
 {
     double tmp = 0;
-    double tmp_ist = 0;    
+    double tmp2 = 0;
+
+    int accy_ist = in[2]; // volendo avere angolo 0 questo rappresenta il nostro errore
+    // in[2] è il valore ricevuto dal mems
+    //Calcolo del termine integrale
+    float deltatime = 10.0/1000.0;
+    IntValue += accy_ist * deltatime;
+    // TODO da fare la limitazione (Windup)
+
+    // Calcolo termine derivativo
+    float dTerm = dev_weight * (accy_ist - last_accy) / (deltatime * 100); //
+    /*
+    dTerm = last_derivative +
+                 (deltatime / (filter + deltatime)) * (dTerm - last_derivative);
+    last_derivative = dTerm;
+*/
+    // TODO aggiungere un filtro passa basso per eliminare i disturbi dovuti alle vobrazioni del motore
+    last_accy = accy_ist;
+
+
+    double PID_Value = (Pro_weight * accy_ist) + (IntValue * Int_weight) + dTerm;
+    ui->accx->display(PID_Value);
+
+    tmp2 = throttle + PID_Value;
+    tmp = throttle - PID_Value;
+
+
+    QByteArray rr;
+    rr.append((quint16)tmp2);
+    rr.append(((quint16)tmp2)>>8);
+    rr.append((quint16)tmp);
+    rr.append(((quint16)tmp)>>8);
+    writeData(rr);
+
+
+}
+
+void MainWindow::pid_control_lavendetta()
+{
+    double tmp = 0;
+    double tmp_ist = 0;
     int accy = ui->accy->value();
     int pos = (abs(accy))/2;
-    if (pos > 19)
+    if (pos > 19 && pos < 80)
         pos = 19;
+    else if (pos > 80)
+        pos = 0;
     tmp = (graph_value[pos])/1000;
     /*
     if (abs(accy) > 45){
@@ -369,9 +473,11 @@ void MainWindow::pid_control()
     }
     */
     int accy_ist = in[2];
-    pos = (abs(accy_ist + dev_accy*2))/2;
-    if (pos > 19)
+    pos = (abs(accy_ist + dev_accy*dev_weight))/2;
+    if (pos > 19 && pos < 80)
         pos = 19;
+    else if (pos > 80)
+        pos = 0;
     tmp_ist = (graph_value[pos])/1000;
 
     /*
@@ -408,24 +514,26 @@ void MainWindow::readData()
     int med_accy = 0;
     in = serial->readAll();
     //console->putData(in.toHex());
-    ui->accx->display(in[0]);
+    //ui->accx->display(in[0]);
     pCubeWidget->rotation = QQuaternion::fromAxisAndAngle(QVector3D(1,0,0), in[2]);
     //updateGL();
+
+
     mdv[indice_acc] = in[2];
     indice_acc++;
-    if (indice_acc == 10)
+    if (indice_acc == story_point)
         indice_acc = 0;
-    for (int i = 0; i < 10; i++){
+    for (int i = 0; i < story_point; i++){
         med_accy += mdv[i];
         int k = indice_acc+i;
-        if (k >= 10)
-            k = k - 10;
+        if (k >= story_point)
+            k = k - story_point;
         if ( k == 0)
-            k = 9;
+            k = story_point - 1;
         dev_accy += in[2] - mdv[k];
     }
-    dev_accy = dev_accy/10;
-    med_accy = med_accy/10;
+    dev_accy = dev_accy/story_point;
+    med_accy = med_accy/story_point;
     ui->accy->display(med_accy);
     pCubeWidget->rotation *= QQuaternion::fromAxisAndAngle(QVector3D(0,0,1), in[0]);
     ui->accz->display(dev_accy);    //in[4]);

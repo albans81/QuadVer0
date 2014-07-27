@@ -28,7 +28,7 @@ extern uint16_t CCR3_Val;
 extern uint16_t CCR4_Val;
 extern uint32_t TimingDelay;
 extern uint8_t Counter;
-extern uint8_t Buffer[8];
+extern uint8_t Buffer[10];
 
 /* Exported macro ------------------------------------------------------------*/
 #define ABS(x)         (x < 0) ? (-x) : x

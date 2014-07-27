@@ -21,7 +21,7 @@ ActionState=1
 Enabled=0
 ShowSource=1
 [DebugChecksum]
-Checksum=-231646861
+Checksum=332272362
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -47,7 +47,7 @@ ITMportsTermIO=0
 ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
 [watch_formats]
-Fmt0={W}0:CCR1_Val	4	4
+Fmt0={W}0:CCR1_Val	3	4
 [DataLog]
 LogEnabled=0
 SumEnabled=0

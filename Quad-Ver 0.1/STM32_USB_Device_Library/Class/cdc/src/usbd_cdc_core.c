@@ -688,12 +688,13 @@ static uint8_t  usbd_cdc_DataOut (void *pdev, uint8_t epnum)
              (uint8_t*)USB_Rx_Buffer,
              USB_Rx_Cnt);
 #endif
-  if (USB_Rx_Cnt == 2){
+  if (USB_Rx_Cnt == 4){
     CCR1_Val = USB_Rx_Buffer[0]+(USB_Rx_Buffer[1]<<8);
-    TIM3->CCR1 = CCR1_Val;
-    TIM3->CCR2 = CCR1_Val;
-    TIM3->CCR3 = CCR1_Val;
-    TIM3->CCR4 = CCR1_Val;
+    CCR2_Val = USB_Rx_Buffer[2]+(USB_Rx_Buffer[3]<<8);
+    TIM3->CCR1 = CCR2_Val; // PC_06
+    TIM3->CCR2 = CCR1_Val; // PC_07
+    TIM3->CCR3 = CCR1_Val; // PB_01
+    TIM3->CCR4 = CCR1_Val; // PB_02
   }
   /* Prepare Out endpoint to receive next packet */
   DCD_EP_PrepareRx(pdev,
