@@ -78,9 +78,12 @@ public:
     int indice_acc;
     int dev_accy;
     double dev_weight;
+<<<<<<< HEAD
     double Pro_weight;
     double Int_weight;
     int story_point;
+=======
+>>>>>>> 2b6ba25f235d4428959590497650c593731f8e3f
 
 private slots:
     void openSerialPort();
@@ -91,11 +94,15 @@ private slots:
     void pid_control();
     void save_curve();
     void load_curve();
+<<<<<<< HEAD
     void pid_control_lavendetta();
     void story_point_set();
     void set_derivativeweight();
     void set_integrativeweight();
     void set_proportionalweight();
+=======
+    void set_derivativeweight();
+>>>>>>> 2b6ba25f235d4428959590497650c593731f8e3f
     void reflesh_slider_value();
     void stop();
     QString HexToAscii(QString Str);

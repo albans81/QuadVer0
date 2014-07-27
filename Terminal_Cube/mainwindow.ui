@@ -6,8 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
+<<<<<<< HEAD
     <width>911</width>
     <height>945</height>
+=======
+    <width>912</width>
+    <height>949</height>
+>>>>>>> 2b6ba25f235d4428959590497650c593731f8e3f
    </rect>
   </property>
   <property name="windowTitle">
@@ -858,6 +863,7 @@
    <widget class="QDoubleSpinBox" name="derivativeweight">
     <property name="geometry">
      <rect>
+<<<<<<< HEAD
       <x>100</x>
       <y>580</y>
       <width>62</width>
@@ -908,10 +914,15 @@
      <rect>
       <x>280</x>
       <y>580</y>
+=======
+      <x>20</x>
+      <y>760</y>
+>>>>>>> 2b6ba25f235d4428959590497650c593731f8e3f
       <width>62</width>
       <height>22</height>
      </rect>
     </property>
+<<<<<<< HEAD
     <property name="minimum">
      <double>-1000.000000000000000</double>
     </property>
@@ -990,6 +1001,10 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;P&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+=======
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+>>>>>>> 2b6ba25f235d4428959590497650c593731f8e3f
     </property>
    </widget>
   </widget>
@@ -998,7 +1013,11 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
+<<<<<<< HEAD
      <width>911</width>
+=======
+     <width>912</width>
+>>>>>>> 2b6ba25f235d4428959590497650c593731f8e3f
      <height>21</height>
     </rect>
    </property>
